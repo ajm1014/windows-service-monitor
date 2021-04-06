@@ -1,0 +1,10 @@
+C:\Users\Austin\source\repos\ServiceMonitor\bin\Debug\ServiceMonitor.exe.config
+C:\Users\Austin\source\repos\ServiceMonitor\bin\Debug\ServiceMonitor.exe
+C:\Users\Austin\source\repos\ServiceMonitor\bin\Debug\ServiceMonitor.pdb
+C:\Users\Austin\source\repos\ServiceMonitor\obj\Debug\ServiceMonitor.csprojAssemblyReference.cache
+C:\Users\Austin\source\repos\ServiceMonitor\obj\Debug\ServiceMonitor.Properties.Resources.resources
+C:\Users\Austin\source\repos\ServiceMonitor\obj\Debug\ServiceMonitor.csproj.GenerateResource.cache
+C:\Users\Austin\source\repos\ServiceMonitor\obj\Debug\ServiceMonitor.csproj.CoreCompileInputs.cache
+C:\Users\Austin\source\repos\ServiceMonitor\obj\Debug\ServiceMonitor.exe
+C:\Users\Austin\source\repos\ServiceMonitor\obj\Debug\ServiceMonitor.pdb
+C:\Users\Austin\source\repos\ServiceMonitor\obj\Debug\ServiceMonitor.Form1.resources
