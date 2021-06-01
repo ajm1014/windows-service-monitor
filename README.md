@@ -1,7 +1,5 @@
 # Windows Service Monitor
 
-### About
-
 This program can be configured to monitor the status of Windows Services across multiple workstations or servers, as well as providing the ability to stop and start services as needed.
 
 ### Usage
