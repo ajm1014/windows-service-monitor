@@ -28,7 +28,7 @@ namespace ServiceMonitor
 
             NameValueCollection appSettings = ConfigurationManager.AppSettings;
 
-            // Code for getting max label size here
+            // Get the maximum label length based on the services entered in appSettings
             Label measureLabel = new Label();
             for (int i = 0; i < appSettings.Count; i++)
             {
@@ -48,11 +48,14 @@ namespace ServiceMonitor
                 }
             }
 
+            // Import information from each key in appSettings
             for (int i = 0; i < appSettings.Count; i++)
             {
                 try
                 {
                     var key = appSettings.GetKey(i);
+
+                    // If the key is for the refresh interval set the value accordingly, otherwise pull the service information
                     if (key.ToString() == "Refresh Interval")
                     {
                         refreshInterval = int.Parse(appSettings[key].ToString());
@@ -64,8 +67,7 @@ namespace ServiceMonitor
                         var computerName = serviceInfo[1];
                         var displayName = appSettings.GetKey(i).ToString();
 
-                            
-
+                        // Create a new service object to keep track of all of the properties and GUI objects related to this service
                         services.Add(new Service
                         {
                             DisplayName = displayName,
@@ -98,11 +100,13 @@ namespace ServiceMonitor
                             }
                         });
 
+                        // Set the tag for the button to the service object so the MouseClick methods can reference it
                         services[i].StartButton.Tag = services[i];
                         services[i].StopButton.Tag = services[i];
                         services[i].StartButton.MouseClick += StartButton_MouseClick;
                         services[i].StopButton.MouseClick += StopButton_MouseClick;
 
+                        // Get the service status and set colors and fonts to appropriate colors
                         if (services[i].ServiceController.Status == ServiceControllerStatus.Running)
                         {
                             services[i].TextBox.BackColor = Color.LightGreen;
@@ -125,6 +129,7 @@ namespace ServiceMonitor
                             services[i].StopButton.Enabled = false;
                         }
 
+                        // Add the GUI objects to the form
                         this.Controls.Add(services[i].Label);
                         this.Controls.Add(services[i].TextBox);
                         this.Controls.Add(services[i].StartButton);
@@ -136,9 +141,11 @@ namespace ServiceMonitor
                 catch { }
             }
 
+            // Set the window width to fit all components and deselect all fields
             this.Width = (startXCord * 3) + (xCordChange * 4) + labelLength + textBoxLength + startButtonLength + stopButtonLength;
             services[0].Label.Select();
 
+            // Start a timer to run the service status refresh
             Timer myTimer = new Timer
             {
                 Tag = services,
