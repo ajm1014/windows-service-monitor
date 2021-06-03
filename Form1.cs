@@ -155,50 +155,63 @@ namespace ServiceMonitor
             myTimer.Start();
         }
 
+
+        // Handle click of the start button for a service
         private void StartButton_MouseClick(object sender, MouseEventArgs e)
         {
             try
             {
                 Service serv = ((Service)((Button)sender).Tag);
 
+                // Start the service and update the text box to starting
                 serv.ServiceController.Start();
                 serv.TextBox.BackColor = Color.LightYellow;
                 serv.TextBox.Text = "Starting";
 
+                // Disable the start button and enable the stop button
                 serv.StartButton.Enabled = false;
                 serv.StopButton.Enabled = true;
 
+                // Remove focus from any text boxes and buttons
                 serv.Label.Select();
             }
             catch { }
         }
 
+
+        // Handle click of the stop button for a service
         private void StopButton_MouseClick(object sender, MouseEventArgs e)
         {
             try
             {
                 Service serv = ((Service)((Button)sender).Tag);
 
+                // Stop the service and update the text box to stopping
                 serv.TextBox.BackColor = Color.LightYellow;
                 serv.ServiceController.Stop();
                 serv.TextBox.Text = "Stopping";
 
+                // Disable the stop button and enable the start button
                 serv.StartButton.Enabled = true;
                 serv.StopButton.Enabled = false;
 
+                // Remove focus from any text boxes and buttons
                 serv.Label.Select();
             }
             catch { }
         }
 
 
+        // Handle each timer tick
         private void TimerEventProcessor(object sender, EventArgs e)
         {
+            // Get a list of the services we are monitoring and loop through them
             List<Service> services = ((List<Service>)((Timer)sender).Tag);
             for (int i = 0; i < services.Count; i++)
             {
                 try
                 {
+                    // Refresh the current status of each service and set the text box and button availability as appropriate
                     services[i].ServiceController.Refresh();
                     if (services[i].ServiceController.Status == ServiceControllerStatus.Running)
                     {
@@ -227,6 +240,7 @@ namespace ServiceMonitor
         }
 
 
+        // Contains all necessary information about each service and the GUI objects associated with it
         struct Service
         {
             public string DisplayName;
