@@ -14,6 +14,7 @@ namespace ServiceMonitor
         {
             InitializeComponent();
 
+            // Global variables to reference for GUI sizes and service information
             List<Service> services = new List<Service>();
             int refreshInterval = 1000;
             int labelLength = 145;
@@ -26,6 +27,7 @@ namespace ServiceMonitor
             int yCordChange = 35;
             int componentHeight = 25;
 
+            // Application settings from config file
             NameValueCollection appSettings = ConfigurationManager.AppSettings;
 
             // Get the maximum label length based on the services entered in appSettings
