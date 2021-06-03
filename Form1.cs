@@ -12,10 +12,13 @@ namespace ServiceMonitor
     {
         public Form1()
         {
+            // Initialize the form
             InitializeComponent();
 
-            // Global variables to reference for GUI sizes and service information
+            // Collection of all service objects
             List<Service> services = new List<Service>();
+
+            // Variables to reference for GUI sizes
             int refreshInterval = 1000;
             int labelLength = 145;
             int textBoxLength = 95;
@@ -55,6 +58,7 @@ namespace ServiceMonitor
             {
                 try
                 {
+                    // Get the next key
                     var key = appSettings.GetKey(i);
 
                     // If the key is for the refresh interval set the value accordingly, otherwise pull the service information
